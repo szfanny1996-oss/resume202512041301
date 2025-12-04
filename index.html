@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杨扬 - 游戏UI动效设计师作品集</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* 1. 字体与基础设置：保持现代艺术感 */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: #f7f9fb; /* 极浅的灰蓝色调背景 */
+            padding: 1.5rem; /* 整体留白 */
+            font-size: 14px; 
+        }
+        
+        /* 2. 定义图片风格的卡片样式 (深阴影、大圆角、内层背景) */
+        .art-card {
+            background-color: #ffffff;
+            border-radius: 2.5rem; /* 6xl 级别的超大圆角 */
+            box-shadow: 0 15px 35px rgba(100, 100, 150, 0.15), 0 5px 15px rgba(0, 0, 0, 0.05); /* 柔和且深邃的阴影 */
+            transition: all 0.3s ease;
+        }
+
+        .art-card:hover {
+            box-shadow: 0 20px 45px rgba(100, 100, 150, 0.2), 0 8px 20px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* 3. 主题色 */
+        .theme-primary {
+            color: #5b6af0; /* 主题蓝紫色 */
+        }
+
+        .section-title {
+            font-weight: 900;
+            letter-spacing: 0.1em;
+        }
+
+        /* 4. 时间轴点样式已移除，仅保留结构线（border-l-2） */
+        
+        /* 调整大标题字号，使其更精细 */
+        .main-header-text {
+            font-size: 2.2rem; /* 进一步缩小字号 */
+        }
+        
+        /* UPDATED: 头像容器样式，移除环形描边，使用径向渐变作为背景光圈 */
+        .avatar-container {
+            position: relative;
+            /* 模拟柔和渐变光圈背景：从主题蓝到浅蓝再到白色 */
+            background: radial-gradient(circle at center, rgba(91, 106, 240, 0.2) 0%, rgba(240, 244, 255, 0.8) 40%, #fff 70%);
+            border-radius: 50%;
+            padding: 0.5rem; /* 增加光圈的视觉边距 */
+        }
+        
+        /* NEW: 求职状态标签样式 */
+        .job-status-tag {
+            position: absolute;
+            bottom: 8px; /* 调整位置 */
+            right: 8px;
+            /* 模仿参考图的淡绿色背景和圆点 */
+            background-color: #e0f2f1; /* 极淡的绿色背景 */
+            color: #0d9488; /* 深青色文字 */
+            padding: 2px 8px;
+            border-radius: 9999px; /* fully rounded */
+            font-size: 0.65rem; /* 极小的字号 */
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        /* NEW: 求职状态小圆点 */
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #10b981; /* 绿色 */
+            border-radius: 50%;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <!-- 主容器，居中且限制最大宽度 -->
+    <div class="max-w-7xl mx-auto space-y-6">
+
+        <!-- 头部信息 (Primary Header Card) -->
+        <header class="art-card p-8 md:p-10 mb-6 bg-[#f0f4ff]">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
+                
+                <!-- 左侧：头像、姓名与职位 -->
+                <div class="flex items-center space-x-6 mb-4 md:mb-0">
+                    
+                    <!-- UPDATED: 头像容器及求职小标签 (ring-2 已移除) -->
+                    <div class="avatar-container">
+                        <!-- 头像占位符：已替换为最新的图片链接 -->
+                        <img src="https://i.ibb.co/0yfJ0NrH/00000000png.jpg"
+                             alt="杨扬的简历照片" 
+                             class="w-24 h-24 rounded-full object-cover shadow-xl border-4 border-white">
+
+                        <!-- 求职中标签 -->
+                        <div class="job-status-tag">
+                            <span class="status-dot"></span>
+                            <span>求职中</span>
+                        </div>
+                    </div>
+                    <!-- END UPDATED: 头像容器及求职小标签 -->
+
+                    <!-- 姓名与职位 -->
+                    <div>
+                        <h1 class="main-header-text font-black text-gray-800 tracking-wider leading-none mb-0">杨扬</h1>
+                        <!-- UPDATED: 使用 pt-1 (padding-top: 4px) 将职位描述向下移动 -->
+                        <p class="text-base font-semibold theme-primary whitespace-nowrap pt-1">资深游戏UI动效设计师</p>
+                    </div>
+                </div>
+
+                <!-- 右侧：联系方式 & 身份标签 -->
+                <div class="space-y-2 md:text-left">
+                    <p class="font-medium text-gray-700">yangdesigner@foxmail.com</p>
+                    <p class="font-medium text-gray-700">13682308516（微信同号）</p>
+                    
+                    <div class="flex space-x-3 text-sm font-medium md:justify-start pt-1"> 
+                         <!-- 标签 -->
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full">5年+动效特效工作经验</span>
+                        <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full">腾讯子公司经验</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 内容主体：两列布局 -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- 右侧列 (工作经历, 设计技能, 占据 2/3 宽度) -->
+            <div class="lg:col-span-2 space-y-6 order-1">
+                
+                <!-- 模块 1: 工作项目经历 (EXPERIENCE) -->
+                <section class="art-card p-6 md:p-8">
+                    <!-- ICON ADDED: 💼 -->
+                    <h2 class="text-lg section-title text-gray-700 mb-6 flex items-center space-x-2">
+                        <span class="text-xl">💼</span>
+                        <span>工作项目经历</span>
+                    </h2>
+
+                    <div class="space-y-8 relative text-sm">
+                        <!-- 经历项 1: 腾娱互动科技公司 -->
+                        <div class="border-l-2 border-gray-200 pl-6 relative">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">腾娱互动科技公司 (腾讯子公司)</h3>
+                                    <p class="font-medium theme-primary">游戏UI动效设计师</p>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500 whitespace-nowrap">2022.03 - 至今</p>
+                            </div>
+                            <!-- 使用标准列表样式 (list-disc) -->
+                            <ul class="text-xs text-gray-600 space-y-2 list-disc ml-5">
+                                <li>使用AE和UE4引擎，第一年在美术中心参与魔方工作室《航海王：壮志雄心》《暗区突围》及战斗类预研项目的手机游戏UI界面预演视频制作，涵盖抽卡、界面转场等交互动画Demo。</li>
+                                <li>之后在《航海王：壮志雄心》项目组中，负责UE4引擎内实装的界面动画设计与落地，包括角色解锁、奖励获得、活动界面入场氛围等内容，并与开发团队合作，推进动效的高质量实现。</li>
+                            </ul>
+                        </div>
+
+                        <!-- 经历项 2: 优必选科技公司 -->
+                        <div class="border-l-2 border-gray-200 pl-6 relative">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">优必选科技公司</h3>
+                                    <p class="font-medium theme-primary">3D界面动效设计师</p>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500 whitespace-nowrap">2020.12 - 2022.01</p>
+                            </div>
+                            <ul class="text-xs text-gray-600 space-y-2 list-disc ml-5">
+                                <li>用AE、C4D制作少儿在线编程App中，IP卡通形象3D动画、启动页动画、App界面UI动效和演示动画、游戏UI动效、UI插画、icon等，输出动效和平面资源。</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 经历项 3: 百度在线网络公司 -->
+                        <div class="border-l-2 border-gray-200 pl-6 relative">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">百度在线网络公司 (智蓝云信外包岗)</h3>
+                                    <p class="font-medium theme-primary">动效设计师</p>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500 whitespace-nowrap">2020.06 - 2020.12</p>
+                            </div>
+                            <ul class="text-xs text-gray-600 space-y-2 list-disc ml-5">
+                                <li>负责百度车车载屏幕界面中，具有缓动节奏与引导性的转场与交互动画，为复杂信息场景设计直观、安全的动态用户体验。</li>
+                            </ul>
+                        </div>
+
+                        <!-- 经历项 4: 深圳开了开了科技公司 -->
+                        <div class="pl-6 relative">
+                            <div class="flex justify-between items-start mb-2">
+                                <div>
+                                    <h3 class="font-bold text-gray-800">深圳开了开了科技公司</h3>
+                                    <p class="font-medium theme-primary">电商视频设计师</p>
+                                </div>
+                                <p class="text-xs font-medium text-gray-500 whitespace-nowrap">2019.03 - 2020.06</p>
+                            </div>
+                            <ul class="text-xs text-gray-600 space-y-2 list-disc ml-5">
+                                <li>用C4D独立制作车载产品的三维视频广告设计制作，包含分镜、C4D渲染、剪辑等。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 模块 4: 设计技能 -->
+                <section class="art-card p-6 md:p-8">
+                    <!-- ICON ADDED: 🎨 (主题色) -->
+                    <h2 class="text-lg section-title text-gray-700 mb-6 flex items-center space-x-2">
+                        <span class="text-xl theme-primary">🎨</span>
+                        <span>设计技能</span>
+                    </h2>
+
+                    <div class="space-y-4 text-sm">
+                        <!-- 技能项 1: UE4 -->
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                            <div class="w-1/3 font-semibold text-gray-800 theme-primary">UE4</div>
+                            <div class="w-2/3 text-gray-600 text-xs">熟练使用，掌握流光材质、粒子特效、二维动画等</div>
+                        </div>
+                        <!-- 技能项 2: Unity3D -->
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                            <div class="w-1/3 font-semibold text-gray-800 theme-primary">Unity3D</div>
+                            <div class="w-2/3 text-gray-600 text-xs">掌握流光材质、粒子特效、二维动画等</div>
+                        </div>
+                        <!-- 技能项 3: After Effects -->
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                            <div class="w-1/3 font-semibold text-gray-800">After Effects</div>
+                            <div class="w-2/3 text-gray-600 text-xs">熟练使用，掌握UI动效、MG动画、粒子动画、插件使用等</div>
+                        </div>
+                        <!-- 技能项 4: CINEMA 4D -->
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                            <div class="w-1/3 font-semibold text-gray-800">CINEMA 4D</div>
+                            <div class="w-2/3 text-gray-600 text-xs">熟练使用，掌握模型搭建、人物骨骼、Octane渲染等</div>
+                        </div>
+                        <!-- 技能项 5: Photoshop & Illustrator -->
+                        <div class="flex justify-between items-start border-b border-gray-100 pb-3">
+                            <div class="w-1/3 font-semibold text-gray-800">平面设计 (PS/AI)</div>
+                            <div class="w-2/3 text-gray-600 text-xs">熟练使用，掌握平面设计、后期调色、logo设计、排版、插画等</div>
+                        </div>
+                        <!-- 技能项 6: 其他 -->
+                        <div class="flex justify-between items-start">
+                            <div class="w-1/3 font-semibold text-gray-800">其他 (手绘/PR/DB)</div>
+                            <div class="w-2/3 text-gray-600 text-xs">
+                                擅长手绘插画；熟练使用 Premiere 进行影片剪辑；掌握 DragonBones 骨骼动画。
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 模块 4 结束 -->
+
+            </div>
+
+            <!-- 左侧列 (教育背景, 核心优势, 占据 1/3 宽度) -->
+            <div class="lg:col-span-1 space-y-6 order-2 lg:order-2">
+                
+                <!-- 模块 2: 教育背景 -->
+                <section class="art-card p-6 md:p-8">
+                    <!-- ICON ADDED: 🎓 -->
+                    <h2 class="text-lg section-title text-gray-700 mb-6 flex items-center space-x-2">
+                        <span class="text-xl">🎓</span>
+                        <span>教育背景</span>
+                    </h2>
+                    
+                    <div class="space-y-6 text-sm">
+                        <!-- 教育项 1: 深圳大学 -->
+                        <div class="border-l-2 border-dashed border-gray-200 pl-4 relative">
+                            <p class="text-xs font-medium theme-primary">2014.09 - 2018.06</p>
+                            <h3 class="font-bold text-gray-800">深圳大学 | 广告设计专业</h3>
+                            <p class="text-xs text-gray-600">统招本科，传播学院。曾获广告学院奖二等奖。</p>
+                            <p class="text-xs text-gray-600 mt-1">2017-2018年前往日本上智大学言语教育研究中心交换学习一年，考取日语N1证书。</p>
+                        </div>
+                        
+                        <!-- 教育项 2: 深圳水晶石培训学校 -->
+                        <div class="border-l-2 border-dashed border-gray-200 pl-4 relative">
+                            <p class="text-xs font-medium theme-primary">2018.07 - 2019.01</p>
+                            <h3 class="font-bold text-gray-800">深圳水晶石培训学校</h3>
+                            <p class="text-xs text-gray-600">6个月全日制学习动态设计与影视包装，掌握AE、C4D等。</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- 模块 3: 核心优势 -->
+                <section class="art-card p-6 md:p-8">
+                    <!-- ICON ADDED: ✨ (主题色) -->
+                    <h2 class="text-lg section-title text-gray-700 mb-6 flex items-center space-x-2">
+                        <span class="text-xl theme-primary">✨</span>
+                        <span>核心优势</span>
+                    </h2>
+                    
+                    <div class="space-y-4 text-sm">
+                        <!-- 优势项 1: 动效设计与系统界面包装 -->
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">动效设计与系统界面包装</h3>
+                            <ul class="text-xs text-gray-500 space-y-1 list-disc ml-5">
+                                <li>专注于UI动效设计，理解动态设计对提升产品视觉品质和游戏体验的重要性。</li>
+                                <li>对游戏UI动效抱有持续热情，善于在体验新品时分析设计趋势。</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- 优势项 2: 游戏动效预演和引擎实装经验 -->
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">游戏动效预演和引擎实装经验</h3>
+                            <ul class="text-xs text-gray-500 space-y-1 list-disc ml-5">
+                                <li>擅长项目前期收集风格和模板参考，在UI设计稿的基础上制作完整的动态预演视频。</li>
+                                <li>后期落地方面，具备扎实的引擎内实现力，能自制贴图辅助特效表现。</li>
+                            </ul>
+                        </div>
+
+                        <!-- 优势项 3: 游戏项目经验与技术落地 -->
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-2">游戏项目经验与技术落地</h3>
+                            <ul class="text-xs text-gray-500 space-y-1 list-disc ml-5">
+                                <li>拥有完整的手机游戏项目从预研到上线的制作经历。熟悉游戏UI动效开发流程。</li>
+                                <li>具备平衡设计表现与性能压力的意识，能与开发、项目管理等同事高效协作。沟通能力强，跟进效果在最终产品中的实现，推动设计高品质落地。</li>
+                                <li>能熟练运用UE4游戏引擎、AE等工具进行动画和特效制作，良好的节奏感与镜头语言运用能力。注重项目复盘。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <!-- 底部/联系方式 -->
+        <footer class="text-center p-6 text-gray-500 mt-10">
+            <p class="text-xs mt-2">&copy; 2025 杨扬 Portfolio. All rights reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
